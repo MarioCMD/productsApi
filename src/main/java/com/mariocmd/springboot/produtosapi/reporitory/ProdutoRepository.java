@@ -1,4 +1,7 @@
 package com.mariocmd.springboot.produtosapi.reporitory;
 
-public interface ProdutoRepository {
+import com.mariocmd.springboot.produtosapi.model.Produto;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ProdutoRepository extends JpaRepository<Produto, String> {
 }
