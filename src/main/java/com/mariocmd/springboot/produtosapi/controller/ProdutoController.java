@@ -4,6 +4,7 @@ import com.mariocmd.springboot.produtosapi.model.Produto;
 import com.mariocmd.springboot.produtosapi.reporitory.ProdutoRepository;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -39,6 +40,11 @@ public class ProdutoController {
     public void update(@PathVariable("id") String id, @RequestBody Produto produto){
         produto.setId(id);
         produtoRepository.save(produto);
+    }
+
+    @GetMapping
+    public List<Produto> search(@RequestParam String nome){
+        return produtoRepository.findByNomeContainingIgnoreCase(nome);
     }
 
 }
